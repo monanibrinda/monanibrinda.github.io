@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brinda Monani — Product Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --amber: #C17F24;
+  --amber-light: #FDF3E3;
+  --amber-mid: #E8971A;
+  --amber-pale: #FEF9F0;
+  --black: #0F0F0E;
+  --gray-dark: #282828;
+  --gray-mid: #555;
+  --gray-light: #888;
+  --gray-rule: #E8E8E5;
+  --bg: #FAFAF8;
+  --sidebar-bg: #F5F4F1;
+  --white: #FFFFFF;
+  --nav-h: 60px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Instrument Sans',sans-serif;background:var(--bg);color:var(--black);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;height:var(--nav-h);background:var(--black);display:flex;align-items:center;justify-content:space-between;padding:0 40px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;color:var(--white);letter-spacing:-0.3px}
+.nav-logo span{color:var(--amber-mid)}
+.nav-links{display:flex;gap:4px}
+.nav-link{font-size:12px;font-weight:400;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);padding:8px 16px;border-radius:3px;cursor:pointer;transition:color 0.2s,background 0.2s;border:none;background:none}
+.nav-link:hover{color:var(--white);background:rgba(255,255,255,0.06)}
+.nav-link.active{color:var(--amber-mid);background:rgba(193,127,36,0.12)}
+
+/* PAGES */
+.page{display:none}
+.page.active{display:block}
+
+/* HERO */
+.hero{background:var(--black);color:var(--white);padding:64px 0 52px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:480px;height:480px;border-radius:50%;background:var(--amber);opacity:0.055}
+.hero::after{content:'';position:absolute;bottom:-80px;left:8%;width:280px;height:280px;border-radius:50%;background:var(--amber-mid);opacity:0.04}
+.container{max-width:1040px;margin:0 auto;padding:0 40px}
+.hero-inner{display:flex;align-items:center;gap:36px;position:relative;z-index:1}
+.avatar{width:76px;height:76px;border-radius:50%;background:var(--amber);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:26px;color:var(--white)}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(28px,4.5vw,48px);line-height:1.1;letter-spacing:-0.5px}
+.hero-role{font-size:11px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;color:var(--amber-mid);margin-top:8px;line-height:1.7}
+.hero-contacts{display:flex;flex-wrap:wrap;gap:5px 18px;margin-top:16px}
+.hero-contacts a,.hero-contacts span{font-size:12.5px;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s}
+.hero-contacts a:hover{color:var(--amber-mid)}
+.hero-stats{display:flex;gap:0;margin-top:32px;position:relative;z-index:1;border:1px solid rgba(255,255,255,0.08);border-radius:6px;overflow:hidden;width:fit-content}
+.stat{padding:16px 28px;text-align:center;border-right:1px solid rgba(255,255,255,0.08)}
+.stat:last-child{border-right:none}
+.stat-num{font-family:'Playfair Display',serif;font-size:28px;line-height:1;color:var(--amber-mid)}
+.stat-lbl{font-size:10px;font-weight:300;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:272px 1fr;max-width:1040px;margin:0 auto;padding:0 40px}
+
+/* SIDEBAR */
+.sidebar{padding:36px 28px 36px 0;border-right:1px solid var(--gray-rule)}
+.sb-section{margin-bottom:28px}
+.sb-title{font-size:9.5px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gray-light);margin-bottom:12px;padding-bottom:7px;border-bottom:1px solid var(--gray-rule)}
+.profile-text{font-size:13px;line-height:1.75;color:var(--gray-mid)}
+.skill-group{margin-bottom:14px}
+.skill-cat{font-size:11px;font-weight:500;color:var(--black);margin-bottom:6px}
+.pills{display:flex;flex-wrap:wrap;gap:4px}
+.pill{font-size:10.5px;padding:3px 8px;border-radius:3px;background:var(--white);border:1px solid var(--gray-rule);color:var(--gray-mid)}
+.pill.amber{background:var(--amber-light);border-color:#F0C878;color:#7A4F10}
+.edu-name{font-size:13px;font-weight:500;color:var(--black)}
+.edu-sub{font-size:11.5px;color:var(--gray-light);margin-top:1px}
+.vol-item{margin-bottom:10px}
+
+/* MAIN */
+.main-col{padding:36px 0 36px 36px}
+.sec-title{font-size:9.5px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gray-light);margin-bottom:20px;padding-bottom:7px;border-bottom:1px solid var(--gray-rule)}
+.job{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--gray-rule)}
+.job:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.job-header{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px;margin-bottom:2px}
+.job-company{font-family:'Playfair Display',serif;font-size:17px;color:var(--black)}
+.job-date{font-size:11.5px;color:var(--gray-light);white-space:nowrap}
+.job-title{font-size:12.5px;color:var(--amber);font-weight:500;margin-bottom:3px}
+.job-desc{font-size:12px;color:var(--gray-light);font-style:italic;margin-bottom:10px;line-height:1.5}
+.job-bullets{list-style:none;padding:0;margin-bottom:10px}
+.job-bullets li{font-size:13px;line-height:1.6;color:var(--gray-dark);padding-left:14px;position:relative;margin-bottom:5px}
+.job-bullets li::before{content:'·';position:absolute;left:0;color:var(--amber);font-size:18px;line-height:1.25}
+.job-bullets li strong{color:var(--black);font-weight:500}
+.job-bullets li .imp{color:var(--amber);font-weight:500}
+.job-tags{display:flex;flex-wrap:wrap;gap:4px}
+.job-tag{font-size:10.5px;padding:2px 7px;border-radius:2px;background:var(--sidebar-bg);color:var(--gray-mid);border:1px solid var(--gray-rule)}
+.early-text{font-size:13px;color:var(--gray-mid);font-style:italic;line-height:1.75}
+
+/* PRINT BTN */
+.print-btn{position:fixed;bottom:28px;right:28px;background:var(--amber);color:var(--white);font-family:'Instrument Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.3px;padding:10px 18px;border-radius:4px;border:none;cursor:pointer;display:flex;align-items:center;gap:7px;z-index:100;transition:background 0.2s,transform 0.15s;box-shadow:0 4px 12px rgba(193,127,36,0.3)}
+.print-btn:hover{background:#A36A18;transform:translateY(-2px)}
+.print-btn svg{width:13px;height:13px;fill:currentColor}
+
+/* ABOUT PAGE */
+.about-page{max-width:1040px;margin:0 auto;padding:60px 40px}
+.about-hero{margin-bottom:64px}
+.about-eyebrow{font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
+.about-headline{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,56px);line-height:1.15;letter-spacing:-0.5px;color:var(--black);max-width:700px}
+.about-headline em{font-style:italic;color:var(--amber)}
+.about-intro{font-size:15.5px;line-height:1.8;color:var(--gray-mid);max-width:620px;margin-top:24px}
+.anecdotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px;margin-bottom:60px}
+.anecdote-card{background:var(--white);border:1px solid var(--gray-rule);border-radius:8px;padding:28px;transition:border-color 0.2s,transform 0.2s}
+.anecdote-card:hover{border-color:var(--amber);transform:translateY(-2px)}
+.anecdote-icon{width:40px;height:40px;border-radius:8px;background:var(--amber-light);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+.anecdote-title{font-family:'Playfair Display',serif;font-size:17px;color:var(--black);margin-bottom:10px;line-height:1.35}
+.anecdote-text{font-size:13.5px;line-height:1.8;color:var(--gray-mid)}
+.anecdote-tag{display:inline-block;margin-top:14px;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--amber);font-weight:500}
+.belief-section{margin-bottom:60px}
+.belief-block{background:var(--black);border-radius:8px;padding:48px;position:relative;overflow:hidden}
+.belief-block::before{content:'\201C';position:absolute;top:-20px;left:28px;font-family:'Playfair Display',serif;font-size:180px;color:rgba(193,127,36,0.1);line-height:1}
+.belief-text{font-family:'Playfair Display',serif;font-size:clamp(17px,2.2vw,24px);line-height:1.6;color:var(--white);max-width:640px;position:relative;z-index:1;font-style:italic}
+.belief-text strong{color:var(--amber-mid);font-style:normal}
+.belief-sig{margin-top:20px;font-size:12px;color:rgba(255,255,255,0.35);letter-spacing:1px;text-transform:uppercase}
+.currently-section{margin-bottom:48px}
+.currently-title{font-family:'Playfair Display',serif;font-size:28px;color:var(--black);margin-bottom:24px}
+.currently-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.currently-item{padding:20px;border-radius:6px;border:1px solid var(--gray-rule);background:var(--white)}
+.currently-label{font-size:9.5px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+.currently-value{font-size:14px;color:var(--black);line-height:1.5}
+.currently-sub{font-size:12px;color:var(--gray-light);margin-top:3px}
+
+/* RESPONSIVE */
+@media(max-width:760px){
+  .layout{grid-template-columns:1fr;padding:0 20px}
+  .sidebar{border-right:none;border-bottom:1px solid var(--gray-rule);padding:28px 0}
+  .main-col{padding:28px 0}
+  .container{padding:0 20px}
+  .hero-inner{flex-direction:column;align-items:flex-start;gap:16px}
+  .hero-stats{width:100%;flex-wrap:wrap}
+  .stat{flex:1;min-width:100px}
+  .hero{padding:40px 0 36px}
+  nav{padding:0 20px}
+  .nav-link{font-size:11px;padding:7px 10px}
+  .about-page{padding:40px 20px}
+  .belief-block{padding:32px 24px}
+  .print-btn{bottom:16px;right:16px}
+}
+@media print{
+  nav,.print-btn,#about-page{display:none!important}
+  #resume-page{display:block!important}
+  body{background:white}
+  *{animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Brinda <span>Monani</span></div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="showPage('resume',this)">Resume</button>
+    <button class="nav-link" onclick="showPage('about',this)">About</button>
+  </div>
+</nav>
+
+<!-- ══ RESUME PAGE ══ -->
+<div id="resume-page" class="page active">
+  <header class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="avatar">BM</div>
+        <div>
+          <h1 class="hero-name">Brinda Monani</h1>
+          <p class="hero-role">Product Manager &nbsp;|&nbsp; Enterprise SaaS &amp; Industrial Software &nbsp;|&nbsp; EV &nbsp;|&nbsp; IoT &nbsp;|&nbsp; B2B Products</p>
+          <div class="hero-contacts">
+            <span>+91 87585 91313</span>
+            <a href="mailto:monanibrinda@gmail.com">monanibrinda@gmail.com</a>
+            <a href="https://linkedin.com/in/brinda-monani" target="_blank">linkedin.com/in/brinda-monani</a>
+            <span>Ahmedabad, Gujarat</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">25</div><div class="stat-lbl">Dealerships deployed</div></div>
+        <div class="stat"><div class="stat-num">42%</div><div class="stat-lbl">Production issues reduced</div></div>
+        <div class="stat"><div class="stat-num">12%</div><div class="stat-lbl">Sales conversion lift</div></div>
+        <div class="stat"><div class="stat-num">40+</div><div class="stat-lbl">Govt clubs served</div></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sb-section">
+        <div class="sb-title">Profile</div>
+        <p class="profile-text">Technical Product Manager with 9+ years delivering enterprise SaaS and industrial software across EV manufacturing, retail, and e-commerce. Computer Engineering graduate who bridges product and engineering natively — accelerating delivery and reducing dependency on technical intermediaries. Experienced managing international clients across Denmark, the UK, and the US.</p>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">Skills</div>
+        <div class="skill-group">
+          <div class="skill-cat">Product</div>
+          <div class="pills"><span class="pill">Agile / Scrum</span><span class="pill">Roadmapping</span><span class="pill">PRD / BRD</span><span class="pill">Sprint Planning</span><span class="pill">Stakeholder Mgmt</span></div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-cat">Technical</div>
+          <div class="pills"><span class="pill">React</span><span class="pill">Flutter</span><span class="pill">REST APIs</span><span class="pill">MongoDB</span><span class="pill">Azure</span><span class="pill">Databricks</span><span class="pill">IoT</span><span class="pill">ETL Design</span><span class="pill">Python</span></div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-cat">Tools</div>
+          <div class="pills"><span class="pill">JIRA</span><span class="pill">Figma</span><span class="pill">Confluence</span><span class="pill">Power BI</span><span class="pill">VS Code</span></div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-cat">Domain</div>
+          <div class="pills"><span class="pill amber">EV Manufacturing</span><span class="pill amber">Enterprise SaaS</span><span class="pill amber">E-commerce</span><span class="pill amber">B2B Products</span><span class="pill amber">Govt SaaS</span></div>
+        </div>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">Education</div>
+        <div class="edu-name">B.Tech — Computer Engineering</div>
+        <div class="edu-sub">Dharmsinh Desai University, Nadiad · 2016</div>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">Volunteer</div>
+        <div class="vol-item"><div class="edu-name">Ladder Media</div><div class="edu-sub">Technical content · Amazon &amp; Microsoft · 2022–23</div></div>
+        <div class="vol-item"><div class="edu-name">Weaving Thoughts</div><div class="edu-sub">SEO content &amp; copywriting · 2021–23</div></div>
+      </div>
+    </aside>
+
+    <main class="main-col">
+      <div class="sec-title">Work Experience</div>
+
+      <div class="job">
+        <div class="job-header"><span class="job-company">Matter Link</span><span class="job-date">Oct 2023 — Present</span></div>
+        <div class="job-title">Product Owner · Ahmedabad, Gujarat</div>
+        <div class="job-desc">EV technology company. Owned 3 products: enterprise dealer sales app, connected vehicle onboarding app, and manufacturing intelligence platform.</div>
+        <ul class="job-bullets">
+          <li>Owned enterprise dealer sales application deployed across <span class="imp">25 dealerships</span>, integrated with CRM, customer engagement &amp; dealer management via middleware — ensuring real-time data routing across the dealer ecosystem.</li>
+          <li>Designed and shipped an <strong>AI-powered Cue Card feature</strong> analysing customer data to surface personalised pitch recommendations — driving a <span class="imp">12% increase in sales conversion</span> across all 25 dealerships at launch.</li>
+          <li>Owned a <strong>manufacturing intelligence platform</strong> capturing real-time production data across multiple lines — implementing station-level validation that <span class="imp">reduced production issues by 42%</span>.</li>
+          <li>Designed supplier and vendor <strong>data processing solutions</strong>, defining classification logic enabling the data team to execute pipeline builds without ambiguity.</li>
+          <li>Prototyped React-based UIs independently and demoed to plant stakeholders — <strong>eliminating designer dependency</strong> and compressing feedback cycles from weeks to days.</li>
+          <li>Owned <strong>connected vehicle onboarding application</strong> orchestrating IoT connectivity, vehicle database, and plant systems for seamless vehicle registration at scale.</li>
+        </ul>
+        <div class="job-tags"><span class="job-tag">Flutter</span><span class="job-tag">React</span><span class="job-tag">Azure Event Hubs</span><span class="job-tag">MongoDB</span><span class="job-tag">Databricks</span><span class="job-tag">IoT</span><span class="job-tag">Figma</span><span class="job-tag">Power BI</span><span class="job-tag">AI/ML</span><span class="job-tag">REST APIs</span></div>
+      </div>
+
+      <div class="job">
+        <div class="job-header"><span class="job-company">BRND Tech</span><span class="job-date">Jan 2023 — Sep 2023</span></div>
+        <div class="job-title">Product Lead · Ahmedabad, Gujarat</div>
+        <div class="job-desc">Sports &amp; facility management SaaS platform serving government and private clubs in Denmark.</div>
+        <ul class="job-bullets">
+          <li>Led a cross-functional team of 20 in Scrum, owning booking management delivery for a platform serving <span class="imp">40+ clubs across 3 Danish regions</span>.</li>
+          <li>Delivered a <strong>full government portal revamp across 6 sprints</strong> — gathering public sector requirements and translating into frontend, backend &amp; mobile specs.</li>
+          <li>Managed integrated ecosystem — SaaS platform, mobile app, and POS — ensuring consistency across booking, inventory, ticketing &amp; loyalty.</li>
+        </ul>
+        <div class="job-tags"><span class="job-tag">Flutter</span><span class="job-tag">.NET MVC</span><span class="job-tag">Java</span><span class="job-tag">JIRA</span><span class="job-tag">Scrum</span></div>
+      </div>
+
+      <div class="job">
+        <div class="job-header"><span class="job-company">Tridhya Intuit Pvt. Ltd.</span><span class="job-date">Jun 2022 — Dec 2022</span></div>
+        <div class="job-title">Project Manager &amp; Business Analyst · Ahmedabad, Gujarat</div>
+        <div class="job-desc">US jewelry e-commerce client and two internal SaaS platforms.</div>
+        <ul class="job-bullets">
+          <li>Managed sprint delivery for a major US jewelry e-commerce platform — shipped <strong>redesigned checkout flow &amp; PayPal integrations</strong>, coordinating a team of 15.</li>
+          <li>Served as primary client liaison &amp; Scrum Master across parallel workstreams while simultaneously serving as BA for two internal SaaS platforms.</li>
+        </ul>
+        <div class="job-tags"><span class="job-tag">JIRA</span><span class="job-tag">Scrum</span><span class="job-tag">BRD / SRS</span><span class="job-tag">E-commerce</span><span class="job-tag">Figma</span></div>
+      </div>
+
+      <div class="job">
+        <div class="job-header"><span class="job-company">Cimpress India Pvt. Ltd. (Vistaprint)</span><span class="job-date">Feb 2019 — Jun 2022</span></div>
+        <div class="job-title">Design Consultant → Business Analyst · Ahmedabad, Gujarat</div>
+        <div class="job-desc">Global mass customisation platform. Progressed from design execution to owning product requirements for DIY design workflows within the website builder.</div>
+        <ul class="job-bullets">
+          <li>Owned product requirements for DIY design workflows — worked with development teams to improve builder tools across multiple product categories, contributing features such as code snippet integration to improve UI customisation outcomes.</li>
+          <li>Led the <strong>Website Builder Migration Program</strong>, migrating <span class="imp">50+ customer websites per month</span> — growing customer base by <span class="imp">7%</span> through reduced hosting costs, with <span class="imp">80% of migrated customers reporting higher satisfaction</span> with the enhanced builder.</li>
+          <li>Owned the <strong>navigation bar feature</strong> end-to-end — researched improvements, defined requirements, and drove implementation as first experience of full feature ownership.</li>
+        </ul>
+        <div class="job-tags"><span class="job-tag">Figma</span><span class="job-tag">.NET</span><span class="job-tag">Illustrator</span><span class="job-tag">Photoshop</span><span class="job-tag">User Research</span></div>
+      </div>
+
+      <div style="margin-top:32px">
+        <div class="sec-title">Early Career</div>
+        <p class="early-text">Began as an Android Developer intern at Bugle Technologies (Dec 2015 – May 2016) before transitioning through sales and operations roles — building technical, communication, and customer empathy foundations ahead of a product career.</p>
+      </div>
+    </main>
+  </div>
+
+  <button class="print-btn" onclick="window.print()">
+    <svg viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+    Print / Save PDF
+  </button>
+</div>
+
+<!-- ══ ABOUT PAGE ══ -->
+<div id="about-page" class="page">
+  <div class="about-page">
+    <div class="about-hero">
+      <div class="about-eyebrow">Beyond the resume</div>
+      <h2 class="about-headline">A product mind.<br>A <em>curious</em> soul.</h2>
+      <p class="about-intro">I build software for a living. But outside of roadmaps and sprints, I'm someone who finds meaning in solitude, stories, and the quiet magic of a long city walk. Here's the version of me that doesn't fit on a CV.</p>
+    </div>
+
+    <div class="anecdotes">
+      <div class="anecdote-card">
+        <div class="anecdote-icon">📚</div>
+        <div class="anecdote-title">I read fiction the way others watch Netflix</div>
+        <div class="anecdote-text">Strictly fiction — no self-help, no business books outside of work. A good novel is the only thing that fully switches my brain off. I share recommendations and half-formed thoughts on Instagram because some books deserve more than a five-star rating.</div>
+        <div class="anecdote-tag">@bookstagram</div>
+      </div>
+      <div class="anecdote-card">
+        <div class="anecdote-icon">🍳</div>
+        <div class="anecdote-title">Cooking is my other kind of product design</div>
+        <div class="anecdote-text">Vegetarian by choice, curious about every cuisine. Cooking is the one place where I experiment without a PRD. I document recipes on Instagram — partly to remember them, partly because food brings people together even across screens.</div>
+        <div class="anecdote-tag">@recipes</div>
+      </div>
+      <div class="anecdote-card">
+        <div class="anecdote-icon">🚶</div>
+        <div class="anecdote-title">I walk cities like other people read maps</div>
+        <div class="anecdote-text">Give me a few hours and an unfamiliar neighbourhood and I'm content. Walking is where I think best — no podcast, no destination. Just the city and whatever surfaces. I've solved more product problems on foot than in meetings.</div>
+        <div class="anecdote-tag">slow travel</div>
+      </div>
+      <div class="anecdote-card">
+        <div class="anecdote-icon">🧘</div>
+        <div class="anecdote-title">Learning to understand the mind from the inside</div>
+        <div class="anecdote-text">I'm deep into meditation and yoga — not as a wellness trend, but out of genuine curiosity about how the body and mind work together. The more I understand myself, the better I understand the people I build products for.</div>
+        <div class="anecdote-tag">mind &amp; body</div>
+      </div>
+      <div class="anecdote-card">
+        <div class="anecdote-icon">✨</div>
+        <div class="anecdote-title">Spiritual — and not ashamed of it</div>
+        <div class="anecdote-text">I believe in a universal force, in manifestation, and in the idea that what you put out comes back. Most people are surprised to hear this from someone who also writes ETL specs. I've stopped thinking those things are in conflict.</div>
+        <div class="anecdote-tag">karma &amp; intention</div>
+      </div>
+      <div class="anecdote-card">
+        <div class="anecdote-icon">⚡</div>
+        <div class="anecdote-title">My superpower is rapid learning</div>
+        <div class="anecdote-text">If I decide I want to learn something — truly decide — my mind aligns everything around it. It's how I went from Android developer to PM to prototyping React UIs without ever feeling out of depth for long. I'm most grateful for this quality.</div>
+        <div class="anecdote-tag">adaptability</div>
+      </div>
+    </div>
+
+    <div class="belief-section">
+      <div class="belief-block">
+        <p class="belief-text">"I believe in <strong>karma, not kismet.</strong> Everything I do will come back to me — so I choose to do good, even for people who wouldn't do the same. Not because it's easy. Because it's who I want to be."</p>
+        <div class="belief-sig">— Brinda Monani</div>
+      </div>
+    </div>
+
+    <div class="currently-section">
+      <div class="currently-title">Currently</div>
+      <div class="currently-grid">
+        <div class="currently-item">
+          <div class="currently-label">Reading</div>
+          <div class="currently-value">Fiction — always fiction</div>
+          <div class="currently-sub">Thrillers, literary, anything with a good mystery</div>
+        </div>
+        <div class="currently-item">
+          <div class="currently-label">Watching</div>
+          <div class="currently-value">Thriller series</div>
+          <div class="currently-sub">TBBT rewatch on rotation, always</div>
+        </div>
+        <div class="currently-item">
+          <div class="currently-label">Learning</div>
+          <div class="currently-value">Meditation &amp; yoga</div>
+          <div class="currently-sub">Understanding the mind from the inside out</div>
+        </div>
+        <div class="currently-item">
+          <div class="currently-label">Exploring</div>
+          <div class="currently-value">New cuisines &amp; city walks</div>
+          <div class="currently-sub">Any neighbourhood I haven't walked yet</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function showPage(page, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(page + '-page').classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
