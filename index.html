@@ -151,57 +151,149 @@ nav{position:sticky;top:0;z-index:200;height:var(--nav-h);background:var(--black
   body{background:white}
   *{animation:none!important}
 }
-  /* PORTFOLIO PAGE */
-.pf-page{max-width:860px;margin:0 auto;padding:60px 40px}
-.pf-hero{background:var(--black);color:var(--white);padding:52px 0 44px;position:relative;overflow:hidden;margin-bottom:0}
-.pf-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:360px;height:360px;border-radius:50%;background:var(--amber);opacity:0.055}
-.pf-hero-inner{max-width:860px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
-.pf-eyebrow{font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:14px}
-.pf-title{font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,40px);line-height:1.15;letter-spacing:-0.5px;color:var(--white);margin-bottom:12px}
-.pf-subtitle{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.6;max-width:560px}
-.pf-meta-row{display:flex;gap:0;margin-top:28px;border:1px solid rgba(255,255,255,0.08);border-radius:6px;overflow:hidden;width:fit-content}
-.pf-meta{padding:12px 24px;text-align:center;border-right:1px solid rgba(255,255,255,0.08)}
-.pf-meta:last-child{border-right:none}
-.pf-meta-num{font-family:'Playfair Display',serif;font-size:22px;line-height:1;color:var(--amber-mid)}
-.pf-meta-lbl{font-size:10px;font-weight:300;color:rgba(255,255,255,0.38);text-transform:uppercase;letter-spacing:0.5px;margin-top:3px}
-.pf-body{max-width:860px;margin:0 auto;padding:0 40px 60px}
-.pf-section{margin-top:48px}
-.pf-section-label{font-size:9.5px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gray-light);margin-bottom:16px;padding-bottom:7px;border-bottom:1px solid var(--gray-rule)}
-.pf-section-title{font-family:'Playfair Display',serif;font-size:20px;color:var(--black);margin-bottom:12px}
-.pf-prose{font-size:14px;line-height:1.8;color:var(--gray-mid)}
-.pf-prose p{margin-bottom:12px}
-.pf-prose p:last-child{margin-bottom:0}
-.pf-list{list-style:none;padding:0;margin:0}
-.pf-list li{font-size:14px;line-height:1.75;color:var(--gray-mid);padding-left:16px;position:relative;margin-bottom:6px}
-.pf-list li::before{content:'·';position:absolute;left:0;color:var(--amber);font-size:18px;line-height:1.3}
-.pf-callout{background:var(--amber-light);border:1px solid #F0C878;border-radius:8px;padding:20px 24px;margin:20px 0}
+ /* ── PORTFOLIO PAGE ── */
+.pf-page{background:var(--bg)}
+
+/* Hero */
+.pf-hero{background:var(--black);color:var(--white);padding:56px 0 48px;position:relative;overflow:hidden}
+.pf-hero::before{content:'';position:absolute;top:-120px;right:-120px;width:480px;height:480px;border-radius:50%;background:var(--amber);opacity:0.045;pointer-events:none}
+.pf-hero::after{content:'';position:absolute;bottom:-60px;left:5%;width:220px;height:220px;border-radius:50%;background:var(--amber-mid);opacity:0.03;pointer-events:none}
+.pf-hero-inner{max-width:900px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
+.pf-eyebrow{font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--amber-mid);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.pf-eyebrow::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.08);max-width:80px}
+.pf-title{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,44px);line-height:1.12;letter-spacing:-0.5px;color:var(--white);margin-bottom:14px}
+.pf-subtitle{font-size:15px;color:rgba(255,255,255,0.55);line-height:1.65;max-width:540px;font-style:italic}
+
+/* Stats row */
+.pf-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:36px;border:1px solid rgba(255,255,255,0.08);border-radius:8px;overflow:hidden;max-width:560px}
+.pf-stat{padding:18px 16px;text-align:center;border-right:1px solid rgba(255,255,255,0.08);transition:background 0.2s}
+.pf-stat:last-child{border-right:none}
+.pf-stat:hover{background:rgba(255,255,255,0.03)}
+.pf-stat-num{font-family:'Playfair Display',serif;font-size:24px;line-height:1;color:var(--amber-mid)}
+.pf-stat-lbl{font-size:10px;font-weight:300;color:rgba(255,255,255,0.36);text-transform:uppercase;letter-spacing:0.5px;margin-top:5px;line-height:1.3}
+
+/* Content body */
+.pf-body{max-width:900px;margin:0 auto;padding:0 40px 80px}
+
+/* Sticky progress nav */
+.pf-progress {
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 10;
+  background: rgba(250,250,248,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--gray-rule);
+
+  display: flex;
+  justify-content: flex-start;   /* LEFT align */
+  gap: 8px;
+
+  max-width: 900px;              /* same as content */
+  margin: 0 auto;                /* center container */
+  padding: 0 40px;               /* same as hero/body */
+
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.pf-progress::-webkit-scrollbar{display:none}
+.pf-prog-item{font-size:10.5px;font-weight:500;letter-spacing:0.8px;text-transform:uppercase;color:var(--gray-light);padding:13px 16px 11px;border-bottom:2px solid transparent;white-space:nowrap;cursor:pointer;transition:color 0.2s,border-color 0.2s;background:none;border-top:none;border-left:none;border-right:none;font-family:inherit}
+.pf-prog-item:hover{color:var(--amber)}
+.pf-prog-item.active{color:var(--amber);border-bottom-color:var(--amber)}
+
+/* Sections */
+.pf-section{padding:52px 0 0;scroll-margin-top:calc(var(--nav-h) + 44px)}
+.pf-section:last-child{padding-bottom:0}
+
+.pf-section-label{font-size:9.5px;font-weight:500;letter-spacing:2.2px;text-transform:uppercase;color:var(--amber);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.pf-section-label::after{content:'';flex:1;height:1px;background:var(--gray-rule)}
+
+.pf-prose{font-size:14.5px;line-height:1.85;color:var(--gray-mid)}
+.pf-prose + .pf-prose{margin-top:12px}
+
+/* Insight callout */
+.pf-insight{background:var(--black);border-radius:10px;padding:28px 32px;margin:24px 0;position:relative;overflow:hidden}
+.pf-insight::before{content:'\201C';position:absolute;top:-16px;left:20px;font-family:'Playfair Display',serif;font-size:120px;color:rgba(193,127,36,0.12);line-height:1;pointer-events:none}
+.pf-insight-text{font-family:'Playfair Display',serif;font-size:16px;line-height:1.7;color:var(--white);font-style:italic;position:relative;z-index:1}
+.pf-insight-text strong{color:var(--amber-mid);font-style:normal}
+
+/* Highlight callout */
+.pf-callout{background:var(--amber-light);border-left:3px solid var(--amber);border-radius:0 8px 8px 0;padding:18px 22px;margin:20px 0}
 .pf-callout-text{font-size:14px;line-height:1.75;color:#7A4F10;font-style:italic}
-.pf-decisions{display:flex;flex-direction:column;gap:16px;margin-top:4px}
-.pf-decision{background:var(--white);border:1px solid var(--gray-rule);border-radius:8px;padding:20px 24px;transition:border-color 0.2s}
-.pf-decision:hover{border-color:var(--amber)}
-.pf-decision-num{font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
-.pf-decision-title{font-size:14px;font-weight:500;color:var(--black);margin-bottom:4px}
+
+/* Decisions / key choices */
+.pf-decisions{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.pf-decision{background:var(--white);border:1px solid var(--gray-rule);border-radius:10px;padding:20px 24px;transition:border-color 0.2s,box-shadow 0.2s;display:grid;grid-template-columns:auto 1fr;gap:0 16px;align-items:start}
+.pf-decision:hover{border-color:var(--amber);box-shadow:0 4px 16px rgba(193,127,36,0.08)}
+.pf-decision-badge{width:32px;height:32px;border-radius:50%;background:var(--amber-light);border:1px solid #F0C878;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:13px;color:var(--amber);flex-shrink:0;margin-top:2px}
+.pf-decision-content{}
+.pf-decision-title{font-size:14px;font-weight:500;color:var(--black);margin-bottom:5px;line-height:1.4}
 .pf-decision-text{font-size:13px;line-height:1.65;color:var(--gray-mid)}
-.pf-impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:4px}
-.pf-impact-card{background:var(--white);border:1px solid var(--gray-rule);border-radius:8px;padding:20px;text-align:center}
-.pf-impact-num{font-family:'Playfair Display',serif;font-size:28px;color:var(--amber);line-height:1;margin-bottom:6px}
-.pf-impact-desc{font-size:12px;color:var(--gray-mid);line-height:1.5}
-.pf-caps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:4px}
-.pf-cap{background:var(--sidebar-bg);border-radius:6px;padding:14px 16px;font-size:13px;color:var(--gray-dark);line-height:1.5;border-left:2.5px solid var(--amber)}
-.pf-belief{background:var(--black);border-radius:8px;padding:32px 36px;margin-top:4px}
-.pf-belief-text{font-family:'Playfair Display',serif;font-size:16px;line-height:1.7;color:var(--white);font-style:italic;max-width:600px}
-.pf-belief-text strong{color:var(--amber-mid);font-style:normal}
-.pf-tradeoff{background:var(--white);border:1px solid var(--gray-rule);border-radius:8px;padding:18px 22px;margin-bottom:12px}
-.pf-tradeoff-title{font-size:13px;font-weight:500;color:var(--black);margin-bottom:4px}
-.pf-tradeoff-text{font-size:13px;color:var(--gray-mid);line-height:1.6}
-.pf-tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
-.pf-tag{font-size:11px;padding:3px 10px;border-radius:3px;background:var(--white);border:1px solid var(--gray-rule);color:var(--gray-mid)}
+
+/* AI layer: input/processing/output flow */
+.pf-ai-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:8px;border:1px solid var(--gray-rule);border-radius:10px;overflow:hidden}
+.pf-ai-step{padding:24px 20px;position:relative}
+.pf-ai-step:not(:last-child){border-right:1px solid var(--gray-rule)}
+.pf-ai-step:nth-child(2){background:var(--sidebar-bg)}
+.pf-ai-arrow{position:absolute;right:-1px;top:50%;transform:translateY(-50%);width:0;height:0}
+.pf-ai-label{font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.pf-ai-label-icon{width:18px;height:18px;border-radius:50%;background:var(--amber-light);border:1px solid #F0C878;display:flex;align-items:center;justify-content:center;font-size:9px}
+.pf-ai-title{font-size:13px;font-weight:500;color:var(--black);margin-bottom:6px;line-height:1.4}
+.pf-ai-text{font-size:12.5px;line-height:1.65;color:var(--gray-mid)}
+
+/* Capabilities grid */
+.pf-caps{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px}
+.pf-cap{display:flex;align-items:flex-start;gap:10px;background:var(--white);border:1px solid var(--gray-rule);border-radius:8px;padding:13px 16px;font-size:13px;color:var(--gray-dark);line-height:1.45;transition:border-color 0.2s}
+.pf-cap:hover{border-color:var(--amber)}
+.pf-cap-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0;margin-top:5px}
+
+/* Tradeoffs */
+.pf-tradeoffs{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.pf-tradeoff{border-radius:8px;border:1px solid var(--gray-rule);overflow:hidden}
+.pf-tradeoff-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;background:var(--white);transition:background 0.15s;gap:12px}
+.pf-tradeoff-header:hover{background:var(--sidebar-bg)}
+.pf-tradeoff-vs{display:flex;align-items:center;gap:8px;flex:1;flex-wrap:wrap}
+.pf-tradeoff-side{font-size:13px;font-weight:500;color:var(--black)}
+.pf-tradeoff-divider{font-size:10px;color:var(--gray-light);font-weight:400;letter-spacing:1px;text-transform:uppercase;padding:3px 7px;background:var(--sidebar-bg);border-radius:3px;white-space:nowrap}
+.pf-tradeoff-body{padding:0 20px 16px;font-size:13px;line-height:1.65;color:var(--gray-mid);border-top:1px solid var(--gray-rule);padding-top:14px;display:none}
+.pf-tradeoff.open .pf-tradeoff-body{display:block}
+.pf-tradeoff-chevron{color:var(--gray-light);transition:transform 0.2s;flex-shrink:0}
+.pf-tradeoff.open .pf-tradeoff-chevron{transform:rotate(180deg)}
+
+/* Role highlight */
+.pf-role-block{background:var(--sidebar-bg);border-radius:10px;padding:24px 28px;margin-top:8px;border:1px solid var(--gray-rule)}
+.pf-prose-role{font-size:14.5px;line-height:1.85;color:var(--gray-dark)}
+
+/* Reflection */
+.pf-reflection{background:var(--black);border-radius:10px;padding:36px;margin-top:8px;position:relative;overflow:hidden}
+.pf-reflection::before{content:'"';position:absolute;top:-10px;left:24px;font-family:'Playfair Display',serif;font-size:140px;color:rgba(193,127,36,0.1);line-height:1;pointer-events:none}
+.pf-reflection-text{font-family:'Playfair Display',serif;font-size:clamp(15px,2vw,18px);line-height:1.7;color:var(--white);font-style:italic;position:relative;z-index:1;max-width:600px}
+.pf-reflection-text strong{color:var(--amber-mid);font-style:normal}
+.pf-reflection-note{font-size:12px;color:rgba(255,255,255,0.35);margin-top:16px;line-height:1.55;position:relative;z-index:1}
+
+/* List style */
+.pf-list{list-style:none;padding:0;margin:8px 0 0}
+.pf-list li{font-size:14px;line-height:1.75;color:var(--gray-mid);padding-left:18px;position:relative;margin-bottom:6px}
+.pf-list li::before{content:'·';position:absolute;left:0;color:var(--amber);font-size:20px;line-height:1.25}
+
+/* Mobile responsive */
 @media(max-width:760px){
   .pf-hero-inner{padding:0 20px}
-  .pf-body{padding:0 20px 40px}
-  .pf-page{padding:0}
-  .pf-meta-row{flex-wrap:wrap}
-  .pf-meta{flex:1;min-width:100px}
+  .pf-hero{padding:40px 0 36px}
+  .pf-stats{grid-template-columns:repeat(2,1fr);max-width:100%}
+  .pf-stat:nth-child(2){border-right:none}
+  .pf-stat:nth-child(3){border-top:1px solid rgba(255,255,255,0.08)}
+  .pf-stat:nth-child(4){border-top:1px solid rgba(255,255,255,0.08);border-right:none}
+  .pf-progress{padding:0 20px}
+  .pf-body{padding:0 20px 60px}
+  .pf-section{padding:40px 0 0}
+  .pf-ai-flow{grid-template-columns:1fr}
+  .pf-ai-step:not(:last-child){border-right:none;border-bottom:1px solid var(--gray-rule)}
+  .pf-caps{grid-template-columns:1fr}
+  .pf-decision{grid-template-columns:1fr;gap:8px}
+  .pf-decision-badge{display:none}
+  .pf-insight{padding:22px 20px}
+  .pf-reflection{padding:24px 20px}
 }
 </style>
 </head>
@@ -497,172 +589,240 @@ function showPage(page,btn){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
-  <!-- PORTFOLIO PAGE -->
-<div id="portfolio-page" class="page">
+  // Update active nav item on scroll within portfolio
+(function(){
+  const sections = ['pf-problem','pf-role','pf-decisions','pf-built','pf-ai','pf-tradeoffs','pf-reflection'];
+  window.addEventListener('scroll', function(){
+    const pfPage = document.getElementById('portfolio-page');
+    if(!pfPage || !pfPage.classList.contains('active')) return;
+    const offset = 100;
+    let current = sections[0];
+    sections.forEach(id=>{
+      const el = document.getElementById(id);
+      if(el && window.scrollY + offset >= el.offsetTop) current = id;
+    });
+    const buttons = document.querySelectorAll('.pf-prog-item');
+    buttons.forEach((b,i)=>{
+      b.classList.toggle('active', sections[i]===current);
+    });
+  });
+})();
+</script>
+<!-- PORTFOLIO PAGE -->
+<div id="portfolio-page" class="page pf-page">
 
+  <!-- Hero -->
   <div class="pf-hero">
     <div class="pf-hero-inner">
       <div class="pf-eyebrow">Case Study &nbsp;·&nbsp; Matter Link</div>
       <h1 class="pf-title">Manufacturing Intelligence Platform</h1>
-      <p class="pf-subtitle">Real-time traceability, validation, and process control system for EV production</p>
-      <div class="pf-meta-row">
-        <div class="pf-meta"><div class="pf-meta-num">42%</div><div class="pf-meta-lbl">Defect reduction</div></div>
-        <div class="pf-meta"><div class="pf-meta-num">200+</div><div class="pf-meta-lbl">Users on platform</div></div>
-        <div class="pf-meta"><div class="pf-meta-num">10</div><div class="pf-meta-lbl">Engineers led</div></div>
-        <div class="pf-meta"><div class="pf-meta-num">0→1</div><div class="pf-meta-lbl">Built from scratch</div></div>
-      </div>
-      <div class="pf-tag-row">
-        <span class="pf-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.1);color:rgba(255,255,255,0.45)">IoT</span>
-        <span class="pf-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.1);color:rgba(255,255,255,0.45)">React</span>
-        <span class="pf-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.1);color:rgba(255,255,255,0.45)">MongoDB</span>
-        <span class="pf-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.1);color:rgba(255,255,255,0.45)">Azure</span>
-        <span class="pf-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.1);color:rgba(255,255,255,0.45)">Databricks</span>
-        <span class="pf-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.1);color:rgba(255,255,255,0.45)">EV Manufacturing</span>
+      <p class="pf-subtitle">Reduced production issues by 42% by enforcing validation at the point of data capture instead of relying on downstream monitoring.</p>
+      <div class="pf-stats">
+        <div class="pf-stat"><div class="pf-stat-num">75%</div><div class="pf-stat-lbl">Adoption rate</div></div>
+        <div class="pf-stat"><div class="pf-stat-num">25%</div><div class="pf-stat-lbl">Faster error detection</div></div>
+        <div class="pf-stat"><div class="pf-stat-num">17%</div><div class="pf-stat-lbl">Less time on data handling</div></div>
       </div>
     </div>
+  </div>
+
+  <!-- Sticky section nav -->
+  <div class="pf-progress" id="pf-nav">
+    <button class="pf-prog-item active" onclick="pfNav('pf-problem',this)">Problem</button>
+    <button class="pf-prog-item" onclick="pfNav('pf-role',this)">My Role</button>
+    <button class="pf-prog-item" onclick="pfNav('pf-decisions',this)">Decisions</button>
+    <button class="pf-prog-item" onclick="pfNav('pf-built',this)">How It Was Built</button>
+    <button class="pf-prog-item" onclick="pfNav('pf-ai',this)">AI Layer</button>
+    <button class="pf-prog-item" onclick="pfNav('pf-tradeoffs',this)">Trade-offs</button>
+    <button class="pf-prog-item" onclick="pfNav('pf-reflection',this)">Reflection</button>
   </div>
 
   <div class="pf-body">
 
-    <div class="pf-section">
-      <div class="pf-section-label">The Problem</div>
-      <p class="pf-prose">EV assembly operated without a unified control layer. Validation was inconsistent across stations, test data from supplier to IQC to assembly was fragmented, and manual recording made data unusable for real decisions.</p>
-      <div class="pf-callout">
-        <div class="pf-callout-text">Defects were propagating across production stages without detection — not because teams weren't trying, but because no system connected the decision points.</div>
+    <!-- Problem & Insight -->
+    <div class="pf-section" id="pf-problem">
+      <div class="pf-section-label">Problem &amp; Insight</div>
+      <p class="pf-prose">Production data existed across supplier systems, IQC, and assembly stations — but it was inconsistent, delayed, and often unreliable. Operators manually entered data, validations were either missing or applied too late, and downstream systems were forced to operate on flawed inputs.</p>
+      <p class="pf-prose" style="margin-top:14px">At first glance, this appeared to be a data quality issue. In reality, the problem was structural.</p>
+      <div class="pf-insight">
+      <p class="pf-insight-text">
+The system <strong>lacked validation at critical assembly points</strong>, allowing incorrect builds to pass through unchecked. Monitoring layers identified issues downstream, but in a zero-downtime production environment, this only enabled detection, not prevention. <strong>Quality depended on observation instead of system control.</strong>
+</p>  
       </div>
     </div>
 
-    <div class="pf-section">
-      <div class="pf-section-label">What We Understood That Others Missed</div>
-      <p class="pf-prose">The issue wasn't a lack of data. It was a lack of continuity across decision points.</p>
-      <p class="pf-prose">Each stage — supplier, IQC, assembly — operated independently, with no system enforcing process discipline or connecting decisions across the product lifecycle. Quality was being monitored but not controlled.</p>
-    </div>
-
-    <div class="pf-section">
-      <div class="pf-section-label">Context</div>
-      <ul class="pf-list">
-        <li>Deployed across the supplier ecosystem and internal assembly lines</li>
-        <li>200+ users — operators, QA engineers, and supervisors</li>
-        <li>Used continuously during live production with zero tolerance for downtime</li>
-      </ul>
-    </div>
-
-    <div class="pf-section">
+    <!-- My Role -->
+    <div class="pf-section" id="pf-role">
       <div class="pf-section-label">My Role</div>
-      <ul class="pf-list">
-        <li>Owned end-to-end product definition and delivery</li>
-        <li>Led a 10-member engineering team</li>
-        <li>Drove feature prioritisation, requirement discovery on-ground with plant teams, and sprint planning and delivery execution</li>
-      </ul>
+      <div class="pf-role-block">
+        <p class="pf-prose-role">Owned the product end-to-end from problem definition to deployment. Led a team of engineers, worked directly with plant operators and data teams, and translated real-world production workflows into enforceable system logic — without disrupting live operations.</p>
+      </div>
     </div>
 
-    <div class="pf-section">
+    <!-- Key Decisions -->
+    <div class="pf-section" id="pf-decisions">
       <div class="pf-section-label">Key Decisions</div>
       <div class="pf-decisions">
         <div class="pf-decision">
-          <div class="pf-decision-num">Decision 01</div>
-          <div class="pf-decision-title">Built a dedicated validation system instead of extending ERP</div>
-          <div class="pf-decision-text">ERP could not support real-time, station-level validation at the speed and granularity production required. A custom system gave us full control over process logic.</div>
+          <div class="pf-decision-badge">1</div>
+          <div class="pf-decision-content">
+            <div class="pf-decision-title">Enforce at Source, Not Monitor Later</div>
+            <div class="pf-decision-text">Shifted from manual checks to system-enforced validation at assembly points, ensuring quality was enforced at the source, not verified later.</div>
+        </div>
         </div>
         <div class="pf-decision">
-          <div class="pf-decision-num">Decision 02</div>
-          <div class="pf-decision-title">Made traceability foundational, not an add-on</div>
-          <div class="pf-decision-text">Every component became trackable and validated at each stage. This was a deliberate architectural choice — not a feature added later — which made end-to-end visibility possible from day one.</div>
+          <div class="pf-decision-badge">2</div>
+          <div class="pf-decision-content">
+            <div class="pf-decision-title">Build Beyond ERP</div>
+            <div class="pf-decision-text">Chose a custom system over extending ERP due to the need for real-time validation, flexibility, and granular process control that ERP constraints could not accommodate.</div>
+          </div>
         </div>
         <div class="pf-decision">
-          <div class="pf-decision-num">Decision 03</div>
-          <div class="pf-decision-title">Introduced a predictive quality layer</div>
-          <div class="pf-decision-text">Shifted the system's posture from defect detection to failure prevention — using historical failure data and component-level test results to surface risk before it entered assembly.</div>
+          <div class="pf-decision-badge">3</div>
+          <div class="pf-decision-content">
+            <div class="pf-decision-title">Make Traceability Foundational</div>
+            <div class="pf-decision-text">Designed end-to-end traceability from day one instead of layering it later — making full lifecycle visibility a structural property, not a feature.</div>
+          </div>
+        </div>
+        <div class="pf-decision">
+          <div class="pf-decision-badge">4</div>
+          <div class="pf-decision-content">
+            <div class="pf-decision-title">Design for Operators</div>
+            <div class="pf-decision-text">Built guided, constraint-driven interfaces aligned with real operator behavior instead of ideal workflows — because the system only works if the people using it trust it.</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="pf-section">
-      <div class="pf-section-label">Solution</div>
-      <p class="pf-prose" style="margin-bottom:20px">A production intelligence platform integrating validation, traceability, process enforcement, and analytics — built to operate in real time on a live assembly floor.</p>
-      <div class="pf-caps-grid">
-        <div class="pf-cap">Real-time line monitoring</div>
-        <div class="pf-cap">Station-level validation checkpoints</div>
-        <div class="pf-cap">Process enforcement layer</div>
-        <div class="pf-cap">Unified test data ingestion (supplier → IQC → assembly)</div>
-        <div class="pf-cap">End-to-end component traceability</div>
-        <div class="pf-cap">Inventory tracking &amp; usage visibility</div>
-        <div class="pf-cap">Analytics dashboards</div>
-        <div class="pf-cap">Supervisor control layer</div>
-      </div>
-    </div>
-
-    <div class="pf-section">
-      <div class="pf-section-label">Process Enforcement Layer</div>
-      <p class="pf-prose">The system ensured process adherence on the shop floor — operators completed defined checkpoints at each station, manual inspection logging supported cases where automation wasn't feasible, and defective components could be flagged, segregated, and recorded in real time.</p>
+    <!-- How It Was Built -->
+    <div class="pf-section" id="pf-built">
+      <div class="pf-section-label">How It Was Built</div>
+      <p class="pf-prose">The platform was designed as a closed-loop system where data capture, validation, processing, and action were tightly connected.</p>
       <div class="pf-callout">
-        <div class="pf-callout-text">Quality was enforced operationally, not just monitored. The distinction matters — monitoring catches problems after the fact. Enforcement prevents them.</div>
+        <div class="pf-callout-text">Data is captured at station-level interfaces and immediately validated using rule-based and contextual checks. Only verified data flows into centralized pipelines, is structured for downstream use, and then surfaced through dashboards and operational views — ensuring quality is guaranteed at input, not corrected later.</div>
+      </div>
+      <p class="pf-prose">Operators became part of the system rather than external to it.</p>
+
+      <div class="pf-section-label" style="margin-top:28px">Core Capabilities</div>
+      <div class="pf-caps">
+        <div class="pf-cap"><span class="pf-cap-dot"></span>Station-level validation checkpoints</div>
+        <div class="pf-cap"><span class="pf-cap-dot"></span>Real-time data ingestion</div>
+        <div class="pf-cap"><span class="pf-cap-dot"></span>Supplier to assembly data standardization</div>
+        <div class="pf-cap"><span class="pf-cap-dot"></span>End-to-end traceability</div>
+        <div class="pf-cap"><span class="pf-cap-dot"></span>Exception and rejection workflows</div>
+        <div class="pf-cap"><span class="pf-cap-dot"></span>Operator-guided input flows</div>
+        <div class="pf-cap"><span class="pf-cap-dot"></span>Centralized data pipelines for analytics</div>
+        <div class="pf-cap"><span class="pf-cap-dot"></span>Production dashboards for visibility</div>
       </div>
     </div>
 
-    <div class="pf-section">
+    <!-- AI Layer -->
+    <div class="pf-section" id="pf-ai">
       <div class="pf-section-label">AI Layer — Predictive Quality</div>
-      <div class="pf-decisions">
-        <div class="pf-decision">
-          <div class="pf-decision-num">Input</div>
-          <div class="pf-decision-title">Historical failure data + component-level test results</div>
-          <div class="pf-decision-text">Every defect recorded, every test result from every supplier, mapped against assembly outcomes over time.</div>
+      <div class="pf-ai-flow">
+        <div class="pf-ai-step">
+          <div class="pf-ai-label"><span class="pf-ai-label-icon">↓</span>Input</div>
+          <div class="pf-ai-title">Historical production data, test results, and failure patterns</div>
+          <div class="pf-ai-text">Every defect recorded, every test result mapped against assembly outcomes over time.</div>
         </div>
-        <div class="pf-decision">
-          <div class="pf-decision-num">Processing</div>
-          <div class="pf-decision-title">Pattern mapping across defect combinations</div>
-          <div class="pf-decision-text">The system learned which combinations of test readings historically led to assembly failures — not individual anomalies, but compound patterns.</div>
+        <div class="pf-ai-step">
+          <div class="pf-ai-label"><span class="pf-ai-label-icon">⚙</span>Processing</div>
+          <div class="pf-ai-title">Pattern recognition across defect combinations and workflows</div>
+          <div class="pf-ai-text">The system learned which combinations of test readings historically led to failures — not individual anomalies, but compound patterns.</div>
         </div>
-        <div class="pf-decision">
-          <div class="pf-decision-num">Output</div>
-          <div class="pf-decision-title">Failure probability for incoming components</div>
-          <div class="pf-decision-text">Teams could intervene before defects entered assembly — rejecting components pre-assembly rather than discovering failures post-installation.</div>
+        <div class="pf-ai-step">
+          <div class="pf-ai-label"><span class="pf-ai-label-icon">↑</span>Output</div>
+          <div class="pf-ai-title">Pre-assembly risk signals enabling intervention before defects propagate</div>
+          <div class="pf-ai-text">Teams could reject components pre-assembly rather than discovering failures post-installation.</div>
+        </div>
+      </div>
+      <p class="pf-prose" style="margin-top:20px">This extended the system from rule-based enforcement to intelligent assistance.</p>
+    </div>
+
+    <!-- Trade-offs -->
+    <div class="pf-section" id="pf-tradeoffs">
+      <div class="pf-section-label">Trade-offs</div>
+      <div class="pf-tradeoffs">
+        <div class="pf-tradeoff open">
+          <div class="pf-tradeoff-header" onclick="toggleTradeoff(this)">
+            <div class="pf-tradeoff-vs">
+              <span class="pf-tradeoff-side">Strict validation</span>
+              <span class="pf-tradeoff-divider">vs</span>
+              <span class="pf-tradeoff-side">Operational speed</span>
+            </div>
+            <svg class="pf-tradeoff-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="pf-tradeoff-body">Initial operator friction due to enforced inputs. Reduced through iterative UX improvements — each sprint informed by on-floor observation rather than assumption.</div>
+        </div>
+        <div class="pf-tradeoff">
+          <div class="pf-tradeoff-header" onclick="toggleTradeoff(this)">
+            <div class="pf-tradeoff-vs">
+              <span class="pf-tradeoff-side">Custom system</span>
+              <span class="pf-tradeoff-divider">vs</span>
+              <span class="pf-tradeoff-side">ERP extension</span>
+            </div>
+            <svg class="pf-tradeoff-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="pf-tradeoff-body">Higher development effort, but it enabled the flexibility and real-time control required for production environments. ERP would have imposed constraints we couldn't work around.</div>
+        </div>
+        <div class="pf-tradeoff">
+          <div class="pf-tradeoff-header" onclick="toggleTradeoff(this)">
+            <div class="pf-tradeoff-vs">
+              <span class="pf-tradeoff-side">Real-time processing</span>
+              <span class="pf-tradeoff-divider">vs</span>
+              <span class="pf-tradeoff-side">System complexity</span>
+            </div>
+            <svg class="pf-tradeoff-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="pf-tradeoff-body">Increased architectural complexity in exchange for immediate feedback and correction loops. The trade-off was deliberate — a system that catches errors late is just expensive monitoring.</div>
         </div>
       </div>
     </div>
 
-    <div class="pf-section">
-      <div class="pf-section-label">Impact</div>
-      <div class="pf-impact-grid">
-        <div class="pf-impact-card"><div class="pf-impact-num">42%</div><div class="pf-impact-desc">Reduction in production defects</div></div>
-        <div class="pf-impact-card"><div class="pf-impact-num">Pre</div><div class="pf-impact-desc">Assembly rejection of faulty components enabled</div></div>
-        <div class="pf-impact-card"><div class="pf-impact-num">1</div><div class="pf-impact-desc">Single source of truth across the full lifecycle</div></div>
-        <div class="pf-impact-card"><div class="pf-impact-num">↑</div><div class="pf-impact-desc">Inventory visibility and component tracking improved</div></div>
-      </div>
-      <p class="pf-prose" style="margin-top:20px">Quality control shifted from reactive to preventive. Standardised process adherence was enforced — not assumed.</p>
-    </div>
-
-    <div class="pf-section">
-      <div class="pf-section-label">Trade-offs &amp; Constraints</div>
-      <div class="pf-tradeoff">
-        <div class="pf-tradeoff-title">Custom system over ERP integration</div>
-        <div class="pf-tradeoff-text">Higher build effort, but the flexibility was non-negotiable for real-time station-level validation. ERP would have imposed constraints we couldn't work around.</div>
-      </div>
-      <div class="pf-tradeoff">
-        <div class="pf-tradeoff-title">Validation depth over early usability</div>
-        <div class="pf-tradeoff-text">Initial designs prioritised system correctness over operator experience. This caused adoption friction in early rollout and required multiple design iterations.</div>
-      </div>
-      <div class="pf-tradeoff">
-        <div class="pf-tradeoff-title">Data standardisation complexity</div>
-        <div class="pf-tradeoff-text">Unifying test data formats across multiple suppliers added significant system complexity. Necessary, but it extended the timeline.</div>
+    <!-- Reflection -->
+    <div class="pf-section" id="pf-reflection">
+      <div class="pf-section-label">Reflection</div>
+      <div class="pf-reflection">
+        <p class="pf-reflection-text">"The key learning was that data systems fail not because of lack of analytics, but because they <strong>tolerate unvalidated inputs.</strong>"</p>
+        <p class="pf-reflection-note">If rebuilt, I would invest earlier in operator behavior design and adaptive validation to reduce friction and accelerate adoption. Quality is not monitored. It is enforced through system design.</p>
       </div>
     </div>
 
-    <div class="pf-section">
-      <div class="pf-section-label">Challenges</div>
-      <ul class="pf-list">
-        <li>Operators initially resisted system-driven workflows — they had established patterns that the system disrupted before it earned their trust</li>
-        <li>Early designs did not align with real station behavior, requiring multiple iterations based on on-ground observation</li>
-      </ul>
-    </div>
+  </div><!-- /pf-body -->
+</div><!-- /portfolio-page -->
+<script>
+const sectionIds = ['pf-problem','pf-role','pf-decisions','pf-built','pf-ai','pf-tradeoffs','pf-reflection'];
+const navItems = document.querySelectorAll(".pf-prog-item");
 
-    <div class="pf-section">
-      <div class="pf-section-label">What I'd Do Differently</div>
-      <div class="pf-belief">
-        <p class="pf-belief-text">"Spend more time observing real workflows before defining requirements. Reduce reliance on stakeholder-described processes. <strong>Design for operator behavior first, system logic second.</strong>"</p>
-      </div>
-    </div>
-  </div>
-</div>
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  // 🔹 Detect normal sections
+  sectionIds.forEach((id) => {
+    const section = document.getElementById(id);
+    const rect = section.getBoundingClientRect();
+
+    if (rect.top <= 150 && rect.bottom >= 150) {
+      current = id;
+    }
+  });
+
+  // 🔥 Fix for last section (reflection)
+  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+    current = 'pf-reflection';
+  }
+
+  // 🔹 Apply active class
+  if (current) {
+    navItems.forEach((btn) => {
+      btn.classList.remove("active");
+
+      if (btn.getAttribute("onclick").includes(current)) {
+        btn.classList.add("active");
+      }
+    });
+  }
+});
+</script>
 </body>
 </html>
+
